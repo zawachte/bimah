@@ -1,0 +1,362 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: bimah
+  description: bimah leads
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Zachary Wachtel
+    email: zawachte@gmail.com
+    url: https://www.zachwachtel.com/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: http://localhost/api
+paths:
+  /rule:
+    get:
+      summary: Returns a list of all rules
+      responses:
+        '200':
+          description: A JSON array of rule IDs
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/rule'
+    post:
+      summary: Create a rule
+      requestBody:
+        description: rule to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                due:
+                  type: string
+                  format: date-time
+      responses:
+          '200':
+            description: ID of created rule
+            content:
+              application/json:
+                schema:
+                  type: integer
+  /rule/{id}:
+    get:
+      summary: Get rule with specific id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The rule ID
+      responses:
+        '200':
+          description: rule with given id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/rule'
+    delete:
+      summary: Delete rule with specific id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The rule ID
+      responses:
+        '200':
+          description: rule with given id deleted
+          content: {}
+  /path:
+    get:
+      summary: Returns a list of all paths
+      responses:
+        '200':
+          description: A JSON array of path IDs
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/path'
+    post:
+      summary: Create an path
+      requestBody:
+        description: path to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                due:
+                  type: string
+                  format: date-time
+      responses:
+          '200':
+            description: ID of created account
+            content:
+              application/json:
+                schema:
+                  type: integer
+  /path/{id}:
+    get:
+      summary: Get account with specific id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The account ID
+      responses:
+        '200':
+          description: Account with given id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/path'
+    delete:
+      summary: Delete Path with path id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The path ID
+      responses:
+        '200':
+          description: Path with given id deleted
+          content: {}
+  /fleet:
+    get:
+      summary: Returns a list of all fleets
+      responses:
+        '200':
+          description: A JSON array of fleet IDs
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/fleet'
+    post:
+      summary: Create an fleet
+      requestBody:
+        description: fleet to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                due:
+                  type: string
+                  format: date-time
+      responses:
+          '200':
+            description: ID of created account
+            content:
+              application/json:
+                schema:
+                  type: integer
+  /fleet/{id}:
+    get:
+      summary: Get fleet with specific id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The account ID
+      responses:
+        '200':
+          description: Account with given id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fleet'
+    delete:
+      summary: Delete fleet with fleet id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The fleet ID
+      responses:
+        '200':
+          description: fleet with given id deleted
+          content: {}
+  /tlsconfig:
+    get:
+      summary: Returns a list of all tlsconfig
+      responses:
+        '200':
+          description: A JSON array of tlsconfig IDs
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  $ref: '#/components/schemas/tlsconfig'
+    post:
+      summary: Create an tlsconfig
+      requestBody:
+        description: tlsconfig to be added to the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                tags:
+                  type: array
+                  items:
+                    type: string
+                due:
+                  type: string
+                  format: date-time
+      responses:
+          '200':
+            description: ID of created account
+            content:
+              application/json:
+                schema:
+                  type: integer
+  /tlsconfig/{id}:
+    get:
+      summary: Get tlsconfig with specific id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The account ID
+      responses:
+        '200':
+          description: Account with given id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tlsconfig'
+    delete:
+      summary: Delete tlsconfig with tlsconfig id
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The tlsconfig ID
+      responses:
+        '200':
+          description: tlsconfig with given id deleted
+          content: {}
+components:
+  schemas:
+    rule:
+      type: object
+      properties:
+        id:
+          type: integer
+        host:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        creationDate:
+          type: string
+          format: date-time
+    path:
+      type: object
+      properties:
+        id:
+          type: integer
+        ruleId:
+          type: integer
+        path:
+          type: string
+        fleetId:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        creationDate:
+          type: string
+          format: date-time
+    fleet:
+      type: object
+      properties:
+        id:
+          type: integer
+        tags:
+          type: array
+          items:
+            type: string
+        endpoints:
+          type: array
+          items:
+            type: string
+        creationDate:
+          type: string
+          format: date-time
+    tlsconfig:
+      type: object
+      properties:
+        id:
+          type: integer
+        certificate:
+          type: string
+        privateKey:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+        hosts:
+          type: array
+          items:
+            type: string
+        creationDate:
+          type: string
+          format: date-time
